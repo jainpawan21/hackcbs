@@ -84,7 +84,7 @@ Author URL: http://w3layouts.com
 				h.push("</div>");
 				return h.join("");
 			};
-			var lat = 29.1393, long = 76.6945, token;
+			var lat, long, token;
 			function geolocate() {
 				if (window.navigator && window.navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(
@@ -95,8 +95,8 @@ Author URL: http://w3layouts.com
 			}
 			async function onGeolocateSuccess(coordinates) {
 				const { latitude, longitude } = coordinates.coords;
-				// lat = latitude;
-				// long = longitude;
+				lat = latitude;
+				long = longitude;
 				console.log("Found coordinates: ", latitude, longitude);
 				var map = new MapmyIndia.Map("map", { center: [lat, long], zoomControl: true, hybrid: true });
 				L.marker([lat, long]).addTo(map);
